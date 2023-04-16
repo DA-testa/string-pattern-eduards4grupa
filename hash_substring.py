@@ -30,7 +30,7 @@ def get_occurrences(patt, text):
     for i in range(1,m):
         p_pow.append((p_pow[-1]*p)%m_mod)
         
-    h=[0]*(n+1)
+    h=[0] * (n  + 1)
     for i in range(1,n+1):
         h[i] = (h[i-1] + (ord(text[i-1]) - ord('a')+1)*p_pow[i-1])% m_mod
         
