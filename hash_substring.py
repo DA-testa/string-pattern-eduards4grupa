@@ -40,7 +40,7 @@ def get_occurrences(pattern, text):
    
     occurrences=[]
     for i in range(n-m+1):
-        current_hash = (h[i+m)-h[i]+m_mod)% m_mod
+        current_hash = (h[i+m]-h[i]+m_mod)% m_mod
         if current_hash == patt_hash:
             if text[i:i+m] == patt
                 occurrences.append(i)
