@@ -8,11 +8,11 @@ def read_input():
         with open("tests/06") as f:
             patt = f.readline().rstrip()
             text = f.readline().rstrip()
-            return patt, text
+            
     else:
         patt = input().rstrip()
         text = input().rstrip()
-        return patt, text
+    return (patt, text)
     # after input type choice
     # read two lines 
     # first line is pattern 
@@ -29,28 +29,17 @@ def print_occurrences(output):
 
 def get_occurrences(patt, text):
     # this function should find the occurances using Rabin Karp alghoritm 
-    n = len(text)
-    m=len(patt)
-    p=31
-    m_mod = 10**9+9
-    p_pow=[1]
-    for i in range(1,m):
-        p_pow.append((p_pow[-1]*p)%m_mod)
-        
-    h=[0] * (n  + 2)
-    for i in range(1,n+1):
-        h[i] = (h[i-1] + (ord(text[i-1]) - ord('a')+1)*p_pow[i-1])% m_mod
-        
-    patt_hash=0
-    for i in range(m):
-        patt_hash=(patt_hash+(ord(patt[i])-ord('a')+1)*p_pow[i]) % m_mod
-   
-    occurrences=[]
-    for i in range(n-m+1):
-        current_hash = (h[i+m]-h[i]+m_mod)% m_mod
-        if current_hash == patt_hash:
-            if text[i:i+m] == patt:
-                occurrences.append(i)
+    res = []
+    if len(patt) > len(text):
+        return res
+    
+    patt_hash=hash(patt)
+    text_hash=[hash(text[i:i+len(patt)]) for i in range (len(text) - len(patt)+1)]
+    for i in range(len(text_hash)):
+        if patt_hash == text_hash[i] and text[i:i+len(patt)] == patt:
+            res.append(i)
+    return res
+
                           
         
                    
