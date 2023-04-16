@@ -36,7 +36,7 @@ def get_occurrences(pattern, text):
         
     patt_hash=0
     for i in range(m):
-        patt_hash=(patt_hash+(ord(patt[i])-ord('a')+1)*p_pow[i] % m_mod
+        patt_hash=(patt_hash+(ord(patt[i])-ord('a')+1)*p_pow[i]) % m_mod
    
     occurrences=[]
     for i in range(n-m+1):
