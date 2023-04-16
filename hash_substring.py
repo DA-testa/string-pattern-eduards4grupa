@@ -40,13 +40,6 @@ def get_occurrences(patt, text):
             res.append(i)
     return res
 
-                          
-        
-                   
-                   
-    # and return an iterable variable
-    return occurrences
-
 
 # this part launches the functions
 if __name__ == '__main__':
