@@ -5,13 +5,14 @@ def read_input():
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
     input_type = input().rstrip()
     if input_type == "f":
-        with open("input.txt","r") as f:
-            patt = input().rstrip()
-            text = input().rstrip()
+        with open("tests/06") as f:
+            patt = f.readline().rstrip()
+            text = f.readline().rstrip()
+            return patt, text
     else:
         patt = input().rstrip()
         text = input().rstrip()
-        
+        return patt, text
     # after input type choice
     # read two lines 
     # first line is pattern 
@@ -20,7 +21,7 @@ def read_input():
     # return both lines in one return
    
     # this is the sample return, notice the rstrip function
-    return patt, text
+    
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
